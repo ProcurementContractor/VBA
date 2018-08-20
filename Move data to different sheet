@@ -1,0 +1,30 @@
+'The following code example inspects the value in column D for each row in Sheet1. 
+'If the value in column D equals "A" the entire row is copied onto SheetA, 
+'in the next empty row. If the value equals "B" the row is copied onto SheetB.
+
+Sub sheet()
+     Sheets("Sheet1").Select
+    ' Find the last row of data
+    FinalRow = Cells(Rows.Count, 1).End(xlUp).Row
+    ' Loop through each row
+    For x = 2 To FinalRow
+        ' Decide if to copy based on column D
+        ThisValue = Cells(x, 4).Value
+        If ThisValue = "A" Then
+            Cells(x, 1).Resize(1, 33).Copy
+            Sheets("SheetA").Select
+            NextRow = Cells(Rows.Count, 1).End(xlUp).Row + 1
+            Cells(NextRow, 1).Select
+            ActiveSheet.Paste
+            Sheets("Sheet1").Select
+        ElseIf ThisValue = "B" Then
+            Cells(x, 1).Resize(1, 33).Copy
+            Sheets("SheetB").Select
+            NextRow = Cells(Rows.Count, 1).End(xlUp).Row + 1
+            Cells(NextRow, 1).Select
+            ActiveSheet.Paste
+            Sheets("Sheet1").Select
+        End If
+    Next x
+
+End Sub
