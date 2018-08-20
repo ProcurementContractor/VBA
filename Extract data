@@ -1,0 +1,24 @@
+
+'使用儲存格的條件式抓出要的資料
+'抓出資料的形態可以是string 和 value
+
+Sub ColorTest()
+Sheets("Sheet1").Select 'sheet 切換
+If Range("E7").Interior.Color = RGB(48, 84, 150) Then '依據需求更改條件，這裡使用顏色當成條件之後，抓出符合條件的資料
+   
+   Range("E7").Copy
+   Sheets("Sheet3").Select
+   Range("A1").Select
+   Range("A1").PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+   Else
+  Range("A1") = " "
+End If
+  
+If Range("E" & 7).Interior.Color = RGB(48, 84, 150) Then
+  Range("A7") = Range("E" & 7).Value
+Else
+  Range("A2") = "I Love you"
+End If
+
+End Sub
