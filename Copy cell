@@ -1,0 +1,7 @@
+'Copy cell
+
+Sub sheet()
+    Worksheets("Sheet1").Range("A1:D6").Copy _
+    Destination:=Worksheets("Sheet2").Range("E5")
+ 
+End Sub
