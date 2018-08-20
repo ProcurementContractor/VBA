@@ -1,0 +1,10 @@
+*move
+'This easy function is used for move data to specific range of the other workbook
+
+Sub move()
+
+   Selection.SpecialCells(xlCellTypeVisible).Select
+   Selection.FormulaR1C1 = "=OFFSET([Coffee.xlsx]Store!RC[-3],0,0)" 'Assign your own Workbook(Coffee) and Sheet(Store)
+   ' -3 stands for move right three ranges 
+   
+End Sub
