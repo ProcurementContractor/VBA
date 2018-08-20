@@ -1,0 +1,11 @@
+'multi cell select
+
+Sub sheet()
+    Dim r1 As Range, r2 As Range, myMultiAreaRange As Range
+    Worksheets("sheet1").Activate
+    Set r1 = Range("A1:B2")
+    Set r2 = Range("C3:D4")
+    Set myMultiAreaRange = Union(r1, r2) 
+    'union可以連結兩個以上不相連的範圍，他會建立一個暫時性的物件，讓使用者可以一次操作多個範圍
+    myMultiAreaRange.Select
+End Sub
